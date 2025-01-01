@@ -7,3 +7,4 @@ var typed = new Typed(".aboutMe", {
     loopCount: Infinity,
     startDelay: 1000
 });
+
