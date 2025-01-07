@@ -6,6 +6,12 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var aboutRouter = require('./routes/about');
+var homeRouter = require('./routes/home');
+var servicesRouter = require('./routes/services');
+var recommendationsRouter = require('./routes/recommendations');
+var portfolioRouter = require('./routes/portfolio');
+var contactRouter = require('./routes/contact');
 
 var app = express();
 
@@ -25,6 +31,17 @@ app.use(express.static(__dirname + '/node_modules/bootstrap-icons'));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/home', homeRouter);
+app.use('/about', aboutRouter);
+app.use('/services', servicesRouter);
+app.use('/recommendations', recommendationsRouter);
+app.use('/portfolio', portfolioRouter);
+app.use('/contact', contactRouter);
+
+app.use(function (req, res, next) {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
